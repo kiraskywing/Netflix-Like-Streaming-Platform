@@ -1,0 +1,101 @@
+mutation {
+  reference_list: createTable(
+    keyspaceName: "yclin"
+    tableName: "reference_list",
+    ifNotExists: true
+    partitionKeys: [
+      {name: "label", type: {basic: TEXT}}
+    ]
+    clusteringKeys: [
+      {name: "value", type: {basic: TEXT}, order: "ASC"}
+    ]
+  )
+}
+
+mutation {
+  movies_by_genre: createTable(
+    keyspaceName: "yclin",
+    tableName: "movies_by_genre",
+    ifNotExists: true,
+    partitionKeys: [
+      {name: "genre", type: {basic: TEXT}}
+    ]
+    clusteringKeys: [
+      {name: "year", type: {basic: INT}, order: "DESC"},
+      {name: "title", type: {basic: TEXT}, order: "ASC"},
+    ]
+    values: [
+      {name: "synopsis", type: {basic: TEXT}},
+      {name: "duration", type: {basic: INT}},
+      {name: "thumbnail", type: {basic: TEXT}},
+    ]
+  )
+}
+
+mutation insertGenre {
+  anime: insertreference_list(value: {label: "genre", value: "Anime"}) {
+    value {value}
+  },
+  award: insertreference_list(value: {label: "genre", value: "Award-Winning"}) {
+    value {value}
+  },
+  children: insertreference_list(value: {label: "genre", value: "Children & Family"}) {
+    value {value}
+  },
+  comedies: insertreference_list(value: {label: "genre", value: "Comedies"}) {
+    value {value}
+  },
+  documentaries: insertreference_list(value: {label: "genre", value: "Documentaries"}) {
+    value {value}
+  },
+  drama: insertreference_list(value: {label: "genre", value: "Drama"}) {
+    value {value}
+  },
+  fantasy: insertreference_list(value: {label: "genre", value: "Fantasy"}) {
+    value {value}
+  },
+  french: insertreference_list(value: {label: "genre", value: "French"}) {
+    value {value}
+  },
+  horror: insertreference_list(value: {label: "genre", value: "Horror"}) {
+    value {value}
+  },
+  independant: insertreference_list(value: {label: "genre", value: "Independant"}) {
+    value {value}
+  },
+  music: insertreference_list(value: {label: "genre", value: "Music"}) {
+    value {value}
+  },
+  romance: insertreference_list(value: {label: "genre", value: "Romance"}) {
+    value {value}
+  },
+  sciFi: insertreference_list(value: {label: "genre", value: "Sci-Fi"}) {
+    value {value}
+  },
+  thriller: insertreference_list(value: {label: "genre", value: "Thriller"}) {
+    value {value}
+  }
+}
+
+query getAllGenre {
+  reference_list(value: {label: "genre"}) {
+    values {
+      value
+    }
+  }
+}
+
+query {
+  movies_by_genre (
+    value: { genre: "Sci-Fi"},
+    orderBy: [year_DESC]
+  ) { 
+    values {
+        year,
+        title,
+        duration,
+        synopsis,
+        thumbnail
+      }
+    }
+}
