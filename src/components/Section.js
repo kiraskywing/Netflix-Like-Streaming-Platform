@@ -5,7 +5,10 @@ const Section = ({ genre }) => {
     const [movies, setMovies] = useState(null)
 
     const fetchData = async() => {
-        const response = await fetch("/.netlify/functions/getMovies")
+        const response = await fetch("/.netlify/functions/getMovies", {
+            method: "POST",
+            body: JSON.stringify({ genre: genre })
+        })
         const responseBody = await response.json()
         // console.log(responseBody.data.movies_by_genre.values)
         setMovies(responseBody.data.movies_by_genre.values)
