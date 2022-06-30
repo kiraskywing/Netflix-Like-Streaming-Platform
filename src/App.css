@@ -1,13 +1,50 @@
+body {
+    background-color: #141414;
+    color: #fff;
+    font-family: "Helvetica Neue", sans-serif;
+}
+
+.container {
+    margin: 0 50px;
+}
+
 .movie-section {
     display: flex;
 }
 
 .card {
-    width: 100px;
+    width: 230px;
+    border-radius: 5px;
+    margin: 2px;
+    transition: transform 500ms;
+    position: relative;
+    display: block;
 }
 
 video {
     width: 100%;
+    border-radius: 5px;
+}
+
+video::-webkit-media-controls {
+    display: none;
+}
+
+.movie-section:focus-within .card,
+.movie-section:focus, .card {
+    transform: translate(-25%);
+    z-index: 1;
+}
+
+.card:focus ~ .card,
+.card:hover ~ .card {
+    transform: translateX(25%);
+}
+
+.movie-section .card:focus,
+.movie-section .card:hover {
+    transform: scale(1.5);
+    z-index: 1;
 }
 
 .more-button {
