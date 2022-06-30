@@ -48,9 +48,14 @@ video::-webkit-media-controls {
 }
 
 .more-button {
-    width: 100px;
-    height: 100px;
-    background-color: red;
+    height: 100%;
+    display: flex;
+    padding: 40px 10px;
+    border-radius: 0 10px 10px 0;
+}
+
+.more-button:hover {
+    background-color: rgb(255, 255, 255, 0.5);
 }
 
 .page-end {
