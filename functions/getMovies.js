@@ -9,7 +9,8 @@ exports.handler = async function (event) {
         query {
             movies_by_genre (
                 value: { genre: ${JSON.stringify(genre)} },
-                orderBy: [year_DESC]
+                orderBy: [year_DESC],
+                options: {pageSize: 6}
             ) {
                 values {
                     year,
@@ -18,6 +19,7 @@ exports.handler = async function (event) {
                     synopsis,
                     thumbnail
                 }
+                pageState
             }
         }
     `  
