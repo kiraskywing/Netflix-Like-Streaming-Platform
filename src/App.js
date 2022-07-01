@@ -34,7 +34,7 @@ const App = () => {
         </div>
       )}
       <div className="page-end"
-        onMouseEnter={() => {
+        onClick={() => {
           setLimit(limit + genreIncrement)
         }}
       />
