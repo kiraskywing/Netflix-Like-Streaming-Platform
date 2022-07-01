@@ -30,11 +30,11 @@ const HeroSection = () => {
                         <h3 className="hero-blurb">{movie.synopsis}</h3>
                         <div className="button-section">
                             <div className="button play">
-                                <span></span>
+                                <span><i className="fas fa-play"></i></span>
                                 Play
                             </div>
                             <div className="button more">
-                                <span></span>
+                                <span><i className="fas fa-info-circle"></i></span>
                                 More info
                             </div>
                         </div>
